@@ -78,14 +78,22 @@ nav .links li a {
 @media (max-width: 992px) {
 
     nav .links {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        overflow: hidden;
     }
 
     nav .links li {
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(0, 0, 0, 0.7);
         border-right: 4px solid black;
-        margin-bottom: 2px;
         width: 100%;
+        margin-bottom: 2px;
+        position: relative;
+        transform: translateX(100%);
+        transition: .3s ease-in-out;
     }
 
     nav .links li a {
@@ -102,12 +110,17 @@ nav .links li a {
         cursor: pointer;
     }
 
-    nav .icon:hover+.links {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        right: 0;
-        top: 100%;
+    nav .icon:hover span:first-child {
+        display: none;
+    }
+
+    nav .icon:hover span:nth-child(2) {
+        transform: translateY(5px) rotate(45deg);
+    }
+
+    nav .icon:hover span:last-child {
+        transform: translateY(-2px) rotate(-45deg);
+
     }
 
     nav .icon span {
@@ -115,6 +128,23 @@ nav .links li a {
         height: 3px;
         margin-bottom: 4px;
         background-color: black;
+        transition: .3s ease;
+    }
+
+    nav .icon:hover+.links li {
+        transform: translateX(0px);
+    }
+
+    nav .links li:nth-child(2) {
+        transition-delay: .1s;
+    }
+
+    nav .links li:nth-child(3) {
+        transition-delay: .2s;
+    }
+
+    nav .links li:last-child {
+        transition-delay: .3s;
     }
 }
 
